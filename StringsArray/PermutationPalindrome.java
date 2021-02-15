@@ -39,11 +39,29 @@ public class PermutationPalindrome {
         }
         return table;
     }
+
+    public static boolean isPermutationPalindrome(String phrase){
+        int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
+        int countOdd = 0;
+        for(char ch : phrase.toCharArray()){
+            int x = getNumericValue(ch);
+
+            if( x != -1 ){
+                table[x]++;
+                if(table[x] % 2 == 1){
+                    countOdd++;
+                }else{
+                    countOdd--;
+                }
+            }
+        }
+        return countOdd <= 1;
+    }
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         String phrase = scn.nextLine();
         
-        System.out.println(checkPalindrome(phrase));
+        System.out.println(isPermutationPalindrome(phrase));
         scn.close();
     }
     
