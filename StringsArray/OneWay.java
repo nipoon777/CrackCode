@@ -45,12 +45,42 @@ public class OneWay {
         }
         return true;
     }
+
+    public static boolean oneEditAwayOptimised (String first, String second ){
+        if ( Math.abs(first.length() - second.length()) > 1){
+            return false;
+        }
+
+        String str1 = first.length() <= second.length() ? first : second;
+        String str2 = first.length() <= second.length() ? second : first;
+
+        int index1 = 0;
+        int index2 = 0;
+        boolean isReplaced = false;
+
+        while ( index1 < str1.length() && index2 < str2.length() ){
+            if(str1.charAt(index1) != str2.charAt(index2)){
+                if(isReplaced){
+                    return false;
+                }
+                isReplaced = true;
+
+                if(str1.length() == str2.length()){
+                    index1++;
+                }
+            }else{
+                index1++;
+            }
+            index2++;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         String first = scn.nextLine();
         String second = scn.nextLine();
 
-        System.out.println(oneEditAway(first,second));
+        System.out.println(oneEditAwayOptimised(first,second));
         scn.close();
     }
     
