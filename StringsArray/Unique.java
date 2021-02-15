@@ -14,10 +14,25 @@ public class Unique{
         }
         return true;
     }
+
+    public static boolean isUnique2(String str){
+        int char_checker = 0;
+        for(int i = 0 ; i < str.length() ; i++ ){
+            int val = str.charAt(i) - 'a';
+            if ( (char_checker & (1 << val) ) > 0){
+                return false;
+            }
+            else{
+                char_checker |= ( 1 << val );
+            }
+
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Scanner scn = new Scanner( System.in);
         String str = scn.nextLine();
-        System.out.println(isUnique(str));
+        System.out.println(isUnique2(str));
         scn.close();
     }
 
