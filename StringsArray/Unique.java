@@ -16,6 +16,9 @@ public class Unique{
     }
 
     public static boolean isUnique2(String str){
+        //This is more Optimised because we use left shift operator as a key and modify our charSet Accordingly
+
+        
         int char_checker = 0;
         for(int i = 0 ; i < str.length() ; i++ ){
             int val = str.charAt(i) - 'a';
