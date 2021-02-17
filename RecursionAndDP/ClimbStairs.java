@@ -44,10 +44,7 @@ public class ClimbStairs {
             totalPaths += climbStairMemoized(n - i, mem);
         }
         mem[n] = totalPaths;
-        // for(int itr : mem){
-        //     System.out.print(itr + " ");
-        // }
-        // System.out.print("*********");
+        
         return totalPaths;
     }
 
