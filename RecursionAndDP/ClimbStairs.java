@@ -29,20 +29,25 @@ public class ClimbStairs {
     }
 
     public static int climbStairMemoized(int n , int[] mem){
-        if(mem[n] != 0){
-            return mem[n];
-        }
+        
         if(n < 0){
             return 0;
         }
         if(n == 0){
             return 1;
         }
-        int totalPaths = 0;
-        for(int i = 1 ; i <= n ; i++){
-            totalPaths += climbStairMemoized(n - i, mem);
-            mem[n] = totalPaths;
+        if(mem[n] != 0){
+            return mem[n];
         }
+        int totalPaths = 0;
+        for(int i = 1 ; i <= 3 ; i++){
+            totalPaths += climbStairMemoized(n - i, mem);
+        }
+        mem[n] = totalPaths;
+        // for(int itr : mem){
+        //     System.out.print(itr + " ");
+        // }
+        // System.out.print("*********");
         return totalPaths;
     }
 
