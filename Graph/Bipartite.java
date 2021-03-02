@@ -32,7 +32,7 @@ public class Bipartite {
             graph[nbr].add(new Edge(nbr, src));
         }
 
-
+    scn.close();
     }
     
 }
